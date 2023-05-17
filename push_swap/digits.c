@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   digits.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/05/04 22:07:12 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/17 20:09:04 by diwalaku      ########   odam.nl         */
+/*   Created: 2023/05/17 19:56:09 by diwalaku      #+#    #+#                 */
+/*   Updated: 2023/05/17 20:08:56 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+int	check_argv(char *argv)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
-	int		i;
+	int	i;
+}
 
-	if (argc < 2)
-		exit(1);	
-	stack_a = create_stack();
-	stack_b = create_stack();
-	if (!stack_a || !stack_b)
-		exit_error();
+int ft_atoi(const char *str)
+{
 	
 }

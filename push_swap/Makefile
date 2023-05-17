@@ -1,6 +1,8 @@
-NAME = push_swap.all
+NAME = push_swap.a
 
-SRCS =
+LIBFT = ???/ or just ft_printf?
+
+SRCS =	main.c stacks.c error.c digits.c
 
 
 OBJ = ${SRCS:.c=.o}
