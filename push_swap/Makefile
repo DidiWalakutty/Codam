@@ -1,9 +1,21 @@
-NAME = push_swap.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: diwalaku <diwalaku@student.42.fr>            +#+                      #
+#                                                    +#+                       #
+#    Created: 2023/05/18 17:39:35 by diwalaku      #+#    #+#                  #
+#    Updated: 2023/05/18 18:36:04 by diwalaku      ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
 
-LIBFT = ???/ or just ft_printf?
+NAME = 		push_swap
 
-SRCS =	main.c stacks.c error.c digits.c
+LIBFT = 	./libft/libft.a
+LIBFT_FLAG = -I libft
 
+SRCS =	main.c stacks.c error.c parsing.c
 
 OBJ = ${SRCS:.c=.o}
 
@@ -11,14 +23,24 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-
 all: ${NAME}
+
+${NAME}: ${OBJ} ${LIBFT}
+	${CC} -o $@ $^
+
+%.o: %.c
+	${CC} ${CFLAGS} -c -o $@ ${LIBFT_FLAG} $^
+	
+${LIBFT}:
+	${MAKE} -C libft
 
 clean:
 		${RM} ${OBJ}
+		${MAKE} -C libft clean
 
 fclean: clean
 		${RM} ${NAME}
+		${MAKE} -C libft fclean
 
 re:		fclean ${NAME}
 
