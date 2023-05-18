@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 14:48:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/18 17:35:24 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/05/18 20:43:24 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ t_stack	*create_stack(void)
 
 t_node	*create_node(int value)
 {
-	t_node	node;
+	t_node	next_node;
 
-	node = (t_node *)malloc(sizeof(t_node));
-	if (!node)
+	next_node = (t_node *)malloc(sizeof(t_node));
+	if (!next_node)
 		return (NULL);
-	node->value = value;
-	node->next = NULL;
-	node->previous = NULL;
-	return (node);
+	next_node->value = value;
+	next_node->next = NULL;
+	next_node->previous = NULL;
+	return (next_node);
 }

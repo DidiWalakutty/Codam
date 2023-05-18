@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/18 18:58:05 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/05/18 20:42:18 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,30 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-typedef struct t_node
+typedef struct s_node
 {
 	int				value;
-	struct t_node	*next;
-	struct t_node	*previous;
+	struct s_node	*next;
+	struct s_node	*previous;
 }	t_node;
 
-typedef struct t_stack
+typedef struct s_stack
 {
 	int		size;
-	t_node	*top;
-	t_node	*bottom;
+	struct s_stack	*top;
+	struct s_stack	*bottom;
 }	t_stack;
 
 // - stack stuff - //
 
 t_stack	*create_stack(void);
-t_stack *create_node(int value);
+t_stack	*create_node(int value);
 
-// - error - //
+// - error handling - //
 
 void	exit_error(void);
 
-// - digits - //
+// - parsing - //
 
 int		check_arguments(char **argv);
 
