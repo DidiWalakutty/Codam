@@ -6,34 +6,75 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 14:48:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/18 20:43:24 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/05/19 16:56:41 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*create_stack(void)
+t_node	*create_node(int nb)
 {
-	t_stack	stacker;
+	t_node	*node;
 
-	stacker = (t_stack *)malloc(sizeof(t_stack));
-	if (!stacker)
+	node = malloc(sizeof(t_node));
+	if (!node)
 		return (NULL);
-	stacker->size = 0;
-	stacker->top = NULL;
-	stacker->bottom = NULL;
-	return (stacker);
+	node->nb = nb;
+	node->next = NULL;
+	return (node);
 }
 
-t_node	*create_node(int value)
+void	*link_to_end(t_node **stack, t_node *new_node)
 {
-	t_node	next_node;
+	t_node	*tmp_stack;
 
-	next_node = (t_node *)malloc(sizeof(t_node));
-	if (!next_node)
-		return (NULL);
-	next_node->value = value;
-	next_node->next = NULL;
-	next_node->previous = NULL;
-	return (next_node);
+	if (!stack || !new_node)
+		return ;
+	if (!*stack)
+	{
+		*stack = new_node;
+		(*stack)->next = NULL;
+	}
+	else
+	{
+		tmp_stack = *stack;
+		while (tmp_stack->next != NULL)
+			tmp_stack = tmp_stack->next;
+		tmp_stack->next = new_node;
+		new_node->next = NULL;
+	}
+
 }
+
+
+
+
+
+
+
+
+// t_stack	*create_stack(void)
+// {
+// 	t_stack	*stacker;
+
+// 	stacker = ft_calloc(1, sizeof(t_stack));
+// 	if (!stacker)
+// 		return (NULL);
+// 	stacker->size = 0;
+// 	stacker->top = NULL;
+// 	stacker->bottom = NULL;
+// 	return (stacker);
+// }
+
+// t_node	*create_link(int value)
+// {
+// 	t_node	next_link;
+
+// 	next_link = (t_node *)malloc(sizeof(t_node));
+// 	if (!next_link)
+// 		return (NULL);
+// 	next_link->value = value;
+// 	next_link->next = NULL;
+// 	next_link->previous = NULL;
+// 	return (next_link);
+// }
