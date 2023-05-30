@@ -6,13 +6,17 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 14:48:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/30 19:03:43 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/05/30 22:06:54 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Create_node  will create a new node
+// Create_node will create a new node which takes int nb as the value of the new node.
+// If the memory allocation is successful, the value of nb is assigned to the created node.
+// The 'next'node is set to NULL, indicating that the next node is set to NULL.
+// The function returns the 'node' pointer, which points to the newly created node.
+// Short: This function sets the value of nb in a new node, and sets 'next' to NULL.
 t_node	*create_node(int nb)
 {
 	t_node	*node;
@@ -33,7 +37,7 @@ void	*link_to_end(t_node **stack, t_node *new_node)
 
 	if (!stack || !new_node)
 		return ;
-	if (!*stack)
+	if (!*stack) 
 	{
 		*stack = new_node;
 		(*stack)->next = NULL;
