@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/19 22:01:30 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/05/30 19:03:50 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_stack
 // ^ stack.node->value ^
 
 
+
 // - stack stuff - //
 
 t_node	*create_node(int nb);
@@ -48,7 +49,8 @@ void	exit_error(void);
 
 // - parsing - //
 
-int		check_validity(char *str, int *nb);
+int		check_arguments(char **argv, t_stack *stack);
+int		check_digits(char *str, int *nb);
 int		atoi_and_overflow(char *str, int *nb);
 
 #endif

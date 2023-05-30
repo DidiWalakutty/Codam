@@ -6,12 +6,13 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 14:48:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/19 16:56:41 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/05/30 19:03:43 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Create_node  will create a new node
 t_node	*create_node(int nb)
 {
 	t_node	*node;
@@ -24,6 +25,8 @@ t_node	*create_node(int nb)
 	return (node);
 }
 
+// Link_to_end checks whether the stack exists, if not, but new_node does, it'll create one.
+// If one does exist, it's added to end of the list.
 void	*link_to_end(t_node **stack, t_node *new_node)
 {
 	t_node	*tmp_stack;

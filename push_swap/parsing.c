@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 19:56:09 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/24 20:59:24 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/05/30 19:03:54 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // check if all arg[] (now *str) arguments are digits or -
 // Shows exit_error in case it's not an int, > int MAX
-int	check_validity(char *str, int *nb)
+int	check_digits(char *str, int *nb)
 {
 	int	i;
 
@@ -70,5 +70,24 @@ int	atoi_and_overflow(char *str, int *nb)
 		x++;
 	}
 	*nb *= multx;
+	return (1);
+}
+
+// This function parses the arguments through the function check_digits to
+// check if the passed arguments are indeed digits and converts it to atoi.
+// If that worked, it'll 
+int	check_arguments(char **argv, t_stack *stack)
+{
+	int	i;
+	int	nb;
+
+	i = 1;
+	while (argv[i])
+	{
+		if (!check_digits(argv[i], &nb))
+			return (0);
+		link_to_end(&(stack->stack.a), create_node(nb));
+		i++;
+	}
 	return (1);
 }
