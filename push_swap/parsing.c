@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 19:56:09 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/30 19:03:54 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/05/31 21:34:01 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	check_digits(char *str, int *nb)
 	int	i;
 
 	i = 0;
+	if (ft_strlen(str) > 11)
+		return (0);
 	if (str[0] == '-')
 	{
 		if (!str[1])
@@ -30,7 +32,7 @@ int	check_digits(char *str, int *nb)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (0)
+			return (0);
 		i++;
 	}
 	if (!atoi_and_overflow(str, nb))
@@ -63,7 +65,7 @@ int	atoi_and_overflow(char *str, int *nb)
 	while (str[x] >= '0' && str[x] <= '9')
 	{
 		*nb += str[x] - '0';
-		if (*nb < 0 && (*nb != INT_MIN || multx = 1))
+		if (*nb < 0 && (*nb != INT_MIN || multx == 1))
 			exit_error();
 		if (str[x + 1] >= '0' && str[x + 1] <= '9')
 			*nb *= 10;
@@ -74,8 +76,10 @@ int	atoi_and_overflow(char *str, int *nb)
 }
 
 // This function parses the arguments through the function check_digits to
-// check if the passed arguments are indeed digits and converts it to atoi.
-// If that worked, it'll 
+// check if the passed arguments are indeed digits and converts it to integers (atoi).
+// If that worked, it'll link nodes to eachother to create the stack.
+// Create_node will create a node with the given nb from check_digits.
+// Then link_to_end is called to link the new node to the end of the list/stack.
 int	check_arguments(char **argv, t_stack *stack)
 {
 	int	i;
@@ -86,7 +90,7 @@ int	check_arguments(char **argv, t_stack *stack)
 	{
 		if (!check_digits(argv[i], &nb))
 			return (0);
-		link_to_end(&(stack->stack.a), create_node(nb));
+		link_to_end(&stack, create_node(nb));
 		i++;
 	}
 	return (1);

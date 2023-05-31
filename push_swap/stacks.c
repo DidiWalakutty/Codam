@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 14:48:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/31 18:50:38 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/05/31 21:38:58 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 // The 'next'node is set to NULL, indicating that the next node is set to NULL.
 // The function returns the 'node' pointer, which points to the newly created node.
 // Short: This function sets the value of nb in a new node, and sets 'next' to NULL.
-t_node	*create_node(int nb)
+t_stack	*create_node(int nb)
 {
-	t_node	*node;
+	t_stack	*node;
 
-	node = malloc(sizeof(t_node));
+	node = malloc(sizeof(t_stack));
 	if (!node)
 		return (NULL);
 	node->nb = nb;
@@ -39,16 +39,16 @@ t_node	*create_node(int nb)
 // it means there's another node after it, so it updates 'tmp_stack' to point to the next node.
 // After the loop, 'tmp_stack' points to the last node in the list. 'next' of 'tmp_stack' is updated to point to the new_node.
 // Finally, the 'next' member of 'new_node' is set to NULL, indicating it's the last node of the list.
-void	*link_to_end(t_node **stack, t_node *new_node)
+void	link_to_end(t_stack **stack, t_stack *new_node)
 {
-	t_node	*tmp_stack;
+	t_stack	*tmp_stack;
 
 	if (!stack || !new_node)
 		return ;
 	if (!*stack) 
 	{
 		*stack = new_node;
-		(*stack)->next = NULL;
+		// (*stack)->next = NULL;
 	}
 	else
 	{
@@ -59,12 +59,6 @@ void	*link_to_end(t_node **stack, t_node *new_node)
 		new_node->next = NULL;
 	}
 }
-
-
-
-
-
-
 
 
 // t_stack	*create_stack(void)
