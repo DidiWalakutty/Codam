@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 14:48:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/30 22:06:54 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/05/31 18:50:38 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,16 @@ t_node	*create_node(int nb)
 	return (node);
 }
 
-// Link_to_end checks whether the stack exists, if not, but new_node does, it'll create one.
-// If one does exist, it's added to end of the list.
+// Link_to_end adds a new_node to the end of a linked list.
+// The parameters 'stack' is a **pointer to the head of the linked list.
+// If stack is empty, the l_l is currently empty, and new_node becomes the first node.
+// The *stack pointer is updated to the new_node, and the 'next'member of new_node is set to NULL (end of list).
+// If the stack is not empty, it iterates through the list to find the last node.
+// It starts by assigning the value of '*stack' to 'tmp_stack'.
+// It enters a loop that continues until it reaches the last node in the list. If tmp_stack->next is not NULL,
+// it means there's another node after it, so it updates 'tmp_stack' to point to the next node.
+// After the loop, 'tmp_stack' points to the last node in the list. 'next' of 'tmp_stack' is updated to point to the new_node.
+// Finally, the 'next' member of 'new_node' is set to NULL, indicating it's the last node of the list.
 void	*link_to_end(t_node **stack, t_node *new_node)
 {
 	t_node	*tmp_stack;
@@ -50,7 +58,6 @@ void	*link_to_end(t_node **stack, t_node *new_node)
 		tmp_stack->next = new_node;
 		new_node->next = NULL;
 	}
-
 }
 
 
