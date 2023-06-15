@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/31 21:47:19 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/15 17:35:30 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,25 @@
 # include <stdarg.h>
 # include <limits.h>
 
+typedef struct s_node
+{
+	int				nb;
+	struct s_node	*next;
+}	t_node;
 
 typedef struct s_stack
 {
-	int				nb;
-	struct s_stack	*next;
+	int		size;
+	struct s_stack *top;
+	struct s_stack *end;
 }	t_stack;
-
-// ^ stack.node->value ^
-
 
 
 // - stack stuff - //
 
-t_stack	*create_node(int nb);
-void	link_to_end(t_stack **stack, t_stack *new_node);
+t_node	*create_node(int nb);
+void	link_to_end(t_stack *stack, t_node *new_node);
+int		check_doubles(t_stack *a);
 
 // - error handling - //
 

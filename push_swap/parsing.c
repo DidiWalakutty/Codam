@@ -6,13 +6,14 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 19:56:09 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/31 21:34:01 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/15 16:35:13 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // check if all arg[] (now *str) arguments are digits or -
+// if str_len > 11, it'll already be bigger than int max/min
 // Shows exit_error in case it's not an int, > int MAX
 int	check_digits(char *str, int *nb)
 {
