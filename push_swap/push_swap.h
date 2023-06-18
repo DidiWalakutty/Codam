@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/15 17:35:30 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/18 19:55:02 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_node
 {
 	int				nb;
 	struct s_node	*next;
+	struct s_node	*prev;
 }	t_node;
 
 typedef struct s_stack

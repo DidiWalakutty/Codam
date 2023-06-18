@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 14:48:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/15 17:37:46 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/18 21:49:08 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	link_to_end(t_stack *stack, t_node *new_node)
 	else
 	{
 		// ended here with Gul
-		tmp = stack->top;
+		// how to end new node to the end of the list.
+		tmp = stack;
 		while (tmp->next != NULL)
 			tmp = tmp->next;
 		tmp->next = new_node;
@@ -63,17 +64,28 @@ void	link_to_end(t_stack *stack, t_node *new_node)
 	}
 }
 
-// stack_a is beginpunt/voordeur van LL, next.
+// traverse and check for doubles
 int	check_doubles(t_stack *stack_a)
 {
-	t_stack	*tmp;
-	t_stack	*tmp_next;
-	int		i;
+	t_node	*last;
 
-	i = 0;
-	tmp = stack_a;
-	while ()
-	
+	last = stack_a->prev;
+	while (stack_a != last)
+	{
+		
+	}
+
 }
 
-libft bonus - check hoe je het doet met ints ipv void
+t_stack	*initialize_stack(void)
+{
+	t_stack	*stack;
+
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (!stack)
+		return (NULL);
+	stack->size = 0;
+	stack->top = NULL;
+	stack->end = NULL;
+	return (stack);
+}
