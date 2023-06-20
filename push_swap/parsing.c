@@ -6,15 +6,14 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 19:56:09 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/18 21:49:14 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/20 19:55:51 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // check if all arg[] (now *str) arguments are digits or -
-// if str_len > 11, it'll already be bigger than int max/min
-// Shows exit_error in case it's not an int, > int MAX
+// if str_len > 11, it's already be bigger than int max/min
 int	check_digits(char *str, int *nb)
 {
 	int	i;
@@ -42,7 +41,7 @@ int	check_digits(char *str, int *nb)
 }
 
 // atoi, overflow and max-min numbers.
-// Start parsing the string from the first non-whitespace char, because whitespace is ignored in atoi.
+// Start parsing the string from the first non-whitespace char.
 // INT_MIN is -...648, INT_MAX is ...647, but in case of INT_MIN (-), we still need to multx it with -1.
 // At first, the int will be bigger than INT_MAX (...648 instead of the max ...647), so I made it an edgecase.
 // the multx=1 check is in case the string is bigger that INT_MAX. It'll also automatically turn nb in a negative (overflow).
@@ -54,12 +53,10 @@ int	atoi_and_overflow(char *str, int *nb)
 	*nb = 0;
 	x = 0;
 	multx = 1;
-	while ((str[x] == '\t' || str[x] == '\n' || str[x] == '\v' || \
-	str[x] == '\f' || str[x] == '\r' || str[x] == ' '))
+	while ((str[x] >= 9 && str[x] <= 13) || str[x] == 32)
 		x++;
-	if (str[x] == '-' || str[x] == '+')
+	if (str[x] == '-')
 	{
-		if (str[x] == '-')
 			multx *= -1;
 		x++;
 	}
@@ -91,7 +88,7 @@ int	check_arguments(char **argv, t_stack *stack)
 	{
 		if (!check_digits(argv[i], &nb))
 			return (0);
-		link_to_end(&stack, create_node(nb));
+		link_to_end(stack, create_node(nb));
 		i++;
 	}
 	return (1);

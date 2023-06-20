@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 17:53:37 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/05/18 15:17:52 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/20 16:28:22 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	exit_error(void)
 {
-	ft_printf("Error\n");
-	exit(1);
+	write(STDERR_FILENO, "Error\n", 6);
+	exit(EXIT_FAILURE);
 }
