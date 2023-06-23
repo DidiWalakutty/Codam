@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 14:48:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/20 20:16:54 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/23 19:27:29 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ int	already_sorted(t_stack *stack_a)
 			return (0);
 		node_copy = node_copy->next;
 	}
+	count_nodes(stack_a);
 	return (1);
 }
