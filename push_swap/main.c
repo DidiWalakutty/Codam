@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:12 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/23 19:54:47 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/26 23:13:43 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,22 @@ int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	t_stack	total_nodes;
+	int		n_count;
 
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-	stack_a = initialize_stack();
-	stack_b = initialize_stack();
-	if (!stack_a || !stack_b)
-		return (1);
-	if (!check_arguments(argv, stack_a))
+	stack_a = NULL;
+	stack_b = NULL;
+	if (check_arguments(argv, stack_a) == false)
 		exit_error();
-	if (!check_doubles(stack_a))
+	if (no_doubles(stack_a) == false)
 		exit_error();
-	if (already_sorted(stack_a) == 1)
+	if (already_sorted(stack_a) == true)
 		return (0);
-	total_nodes.nodecount_a = argc - 1;
-	total_nodes.nodecount_b = 0;
-	if (stack_a->nodecount_a <= 5)
-		sort_small_stack(stack_a);
+	if (count_nodes(stack_a, &n_count) <= 5)
+		sort_small_stack(stack_a, n_count);
 	else
 		radix_sort(stack_a);
 }
+
+// mogelijk: aparte functies voor counting nodes en last_node

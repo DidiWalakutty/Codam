@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/23 20:28:52 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/26 23:13:17 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,35 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <limits.h>
+# include <stdbool.h>
+
+typedef struct s_node t_node;
 
 typedef struct s_node
 {
 	int				nb;
+	int				n_count;
 	int				index;
-	struct s_node	*next;
+	struct t_node	*next;
 	//struct s_node	*prev;
-}	t_node;
-
-typedef struct s_stack
-{
-	size_t	nodecount_a;
-	size_t	nodecount_b;
-	t_node	*top;
-	t_node	*bottom;
 }	t_stack;
+
+// typedef struct s_stack
+// {
+// 	size_t	nodecount_a;
+// 	size_t	nodecount_b;
+// 	t_node	*top;
+// 	t_node	*bottom;
+// }	t_stack;
+// gebruik van top/bottom moet continu geupdate worden, beter lstlast
 
 // - stacks and nodes - //
 
-t_node	*create_node(int nb);
+t_stack	*create_node(int nb);
 void	link_to_end(t_stack *stack, t_node *new_node);
-int		check_doubles(t_stack *stack_a);
-int		already_sorted(t_stack *stack_a);
+bool	no_doubles(t_stack *stack_a);
+bool	already_sorted(t_stack *stack_a);
+int		count_nodes(t_stack *stack, int n_count);
 
 // - error - //
 
@@ -49,14 +55,13 @@ void	exit_error(void);
 
 // - parsing arguments - //
 
-int		check_arguments(char **argv, t_stack *stack);
-int		check_digits(char *str, int *nb);
-int		atoi_and_overflow(char *str, int *nb);
-t_stack	*initialize_stack(void);
+bool	check_arguments(char **argv, t_stack *stack);
+bool	check_digits(char *str, int *nb);
+bool	atoi_and_overflow(char *str, int *nb);
 
 // - sorting small stack - //
 
-void	sort_small_stack (t_stack *stack_a);
+void	sort_small_stack (t_stack *stack_a, int n_count);
 void	sort_index(t_stack *stack_a);
 
 // - sorting big stack - //

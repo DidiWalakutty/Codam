@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 19:56:09 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/20 19:55:51 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/26 22:27:53 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 // check if all arg[] (now *str) arguments are digits or -
 // if str_len > 11, it's already be bigger than int max/min
-int	check_digits(char *str, int *nb)
+bool	check_digits(char *str, int *nb)
 {
 	int	i;
 
 	i = 0;
 	if (ft_strlen(str) > 11)
-		return (0);
+		return (false);
 	if (str[0] == '-')
 	{
 		if (!str[1])
-			return (0);
+			return (false);
 		i++;
 	}
 	if (str[i] == '\0')
@@ -32,12 +32,12 @@ int	check_digits(char *str, int *nb)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (0);
+			return (false);
 		i++;
 	}
-	if (!atoi_and_overflow(str, nb))
-		return (0);
-	return (1);
+	if (!atoi_and_overflow(str, nb) == false)
+		return (false);
+	return (true);
 }
 
 // atoi, overflow and max-min numbers.
@@ -45,7 +45,7 @@ int	check_digits(char *str, int *nb)
 // INT_MIN is -...648, INT_MAX is ...647, but in case of INT_MIN (-), we still need to multx it with -1.
 // At first, the int will be bigger than INT_MAX (...648 instead of the max ...647), so I made it an edgecase.
 // the multx=1 check is in case the string is bigger that INT_MAX. It'll also automatically turn nb in a negative (overflow).
-int	atoi_and_overflow(char *str, int *nb)
+bool	atoi_and_overflow(char *str, int *nb)
 {
 	int	x;
 	int	multx;
@@ -70,7 +70,7 @@ int	atoi_and_overflow(char *str, int *nb)
 		x++;
 	}
 	*nb *= multx;
-	return (1);
+	return (true);
 }
 
 // This function parses the arguments through the function check_digits to
@@ -78,7 +78,7 @@ int	atoi_and_overflow(char *str, int *nb)
 // If that worked, it'll link nodes to eachother to create the stack.
 // Create_node will create a node with the given nb from check_digits.
 // Then link_to_end is called to link the new node to the end of the list/stack.
-int	check_arguments(char **argv, t_stack *stack)
+bool	check_arguments(char **argv, t_stack *stack)
 {
 	int	i;
 	int	nb;
@@ -86,10 +86,10 @@ int	check_arguments(char **argv, t_stack *stack)
 	i = 1;
 	while (argv[i])
 	{
-		if (!check_digits(argv[i], &nb))
-			return (0);
+		if (check_digits(argv[i], &nb) == false)
+			return (false);
 		link_to_end(stack, create_node(nb));
 		i++;
 	}
-	return (1);
+	return (true);
 }
