@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/20 19:55:58 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/26 23:16:51 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/28 17:22:46 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,20 @@
 
 void	sort_index(t_stack *stack_a)
 {
+	long int	min;
+	long int	max;
+	t_node		*temp;
+	int			index;
+
+	min = INT_MIN - 1;
+	max = INT_MAX;
+	temp = stack_a;
+
+	while (temp > min && temp < max)
+	{
+		
+	}
+
 	// werk met low = int_min en high = int_max, evt long int = int min -1
 	// if temp > int min && temp < max, update
 }

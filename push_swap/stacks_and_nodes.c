@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 14:48:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/26 23:11:05 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/28 16:20:21 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,20 @@ void	link_to_end(t_stack *stack, t_node *new_node)
 	}
 	else
 	{
-		ft_lstlast(new_node);
+		temp = last_node(stack);
+		temp->next = new_node;
 		new_node->next = NULL;
 	}
+}
+
+t_stack	*last_node(t_stack *stack)
+{
+	t_node *temp;
+
+	temp = stack;
+	while (temp->next)
+		temp = temp->next;
+	return (temp);
 }
 
 // This function checks for doubles in the nodes.
@@ -86,7 +97,7 @@ bool	already_sorted(t_stack *stack_a)
 	return (true);
 }
 
-int	count_nodes(t_stack *stack, int n_count)
+int	count_nodes(t_stack *stack)
 {
 	int	i;
 
