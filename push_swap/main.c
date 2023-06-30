@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:12 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/28 15:45:32 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/30 19:29:26 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int		n_count;
 
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
@@ -28,9 +27,9 @@ int	main(int argc, char *argv[])
 		exit_error();
 	if (already_sorted(stack_a) == true)
 		return (0);
-	n_count = count_nodes(stack_a);
-	if (n_count <= 5)
-		sort_small_stack(stack_a, n_count);
+	// n_count = count_nodes(stack_a);
+	// if (n_count <= 5)
+	// 	sort_small_stack(stack_a, n_count);
 	//else
 	//	radix_sort(stack_a);
 }

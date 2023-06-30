@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 14:48:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/28 16:20:21 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/06/30 20:01:51 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_stack	*create_node(int nb)
 	if (!new_node)
 		return (NULL);
 	new_node->nb = nb;
+	new_node->index = -1;
 	new_node->next = NULL;
 	return (new_node);
 }
@@ -97,15 +98,3 @@ bool	already_sorted(t_stack *stack_a)
 	return (true);
 }
 
-int	count_nodes(t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	while (stack->next)
-	{
-		i++;
-		stack = stack->next;
-	}
-	return (i);
-}
