@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/30 20:01:52 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/04 17:33:18 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,57 +21,53 @@
 # include <limits.h>
 # include <stdbool.h>
 
-typedef struct s_node t_node;
-typedef struct s_node t_stack;
-
-typedef struct s_node
+typedef struct s_stack
 {
-	int		nb;
-	int		n_count;
-	int		index;
-	t_node	*next;
+	int				nb;
+	int				index;
+	struct s_stack	*next;
 }	t_stack;
-
-// typedef struct s_stack
-// {
-// 	size_t	nodecount_a;
-// 	size_t	nodecount_b;
-// 	t_node	*top;
-// 	t_node	*bottom;
-// }	t_stack;
-// gebruik van top/bottom moet continu geupdate worden, beter lstlast
-
 
 // - parsing arguments - //
 
 bool	check_arguments(char **argv, t_stack *stack);
 bool	check_digits(char *str, int *nb);
 bool	atoi_and_overflow(char *str, int *nb);
+bool	no_doubles(t_stack *stack);
+bool	already_sorted(t_stack *stack);
 
-// - stacks and nodes - //
+// - stack utils - //
 
-t_stack	*create_node(int nb);
-void	link_to_end(t_stack *stack, t_node *new_node);
-bool	no_doubles(t_stack *stack_a);
-bool	already_sorted(t_stack *stack_a);
-int		count_nodes(t_stack *stack);
-t_stack	*last_node(t_stack *stack);
+t_stack	*create_stack(int nb);
+void	link_to_end(t_stack *stack, t_stack *new);
+t_stack	*last_stack(t_stack *stack);
+void	add_front(t_stack **stack, t_stack *new);
+int		count_stacks(t_stack *stack);
 
 // - error - //
 
 void	exit_error(void);
 
-// - sorting small stack - //
+// - index and sort - //
 
-void	sort_small_stack (t_stack *stack_a, int n_count);
-void	sort_index(t_stack *stack_a);
-
-// - sorting big stack - //
-
-void	radix_sort(t_stack *stack_a);
+void	sort_index(t_stack *stack);
+void	sort(t_stack **a, t_stack **b);
 
 // - operations - //
 
+void	ra(t_stack **a);
+void	rb(t_stack **a);
+void	rr(t_stack **a, t_stack **b);
 
+void	sa(t_stack **a);
+void	sb(t_stack **b);
+void	ss(t_stack **a, t_stack **b);
+
+void	rra(t_stack **a);
+void	rrb(t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
+
+void	pa(t_stack **b, t_stack **a);
+void	pb(t_stack **a, t_stack **b);
 
 #endif

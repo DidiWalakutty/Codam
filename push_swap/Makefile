@@ -6,7 +6,7 @@
 #    By: diwalaku <diwalaku@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/05/18 17:39:35 by diwalaku      #+#    #+#                  #
-#    Updated: 2023/06/30 19:28:31 by diwalaku      ########   odam.nl          #
+#    Updated: 2023/07/04 18:13:16 by diwalaku      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,15 @@ NAME = 		push_swap
 LIBFT = 	./libft/libft.a
 LIBFT_FLAG = -I libft
 
-SRCS =	main.c stacks_and_nodes.c error.c parsing.c sorting.c \
+SRCS =	main.c \
+		parsing.c \
+		stack_utils.c \
+		sorting.c \
+		swap.c \
+		push.c \
+		rotate.c \
+		reverse_rotate.c \
+		error.c
 
 
 OBJ = ${SRCS:.c=.o}

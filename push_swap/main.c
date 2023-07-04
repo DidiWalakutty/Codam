@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:12 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/30 19:29:26 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/04 17:47:20 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,19 @@
 
 int	main(int argc, char *argv[])
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack	*a;
+	t_stack	*b;
 
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-	stack_a = NULL;
-	stack_b = NULL;
-	if (check_arguments(argv, stack_a) == false)
+	a = NULL;
+	b = NULL;
+	if (check_arguments(argv, a) == false)
 		exit_error();
-	if (no_doubles(stack_a) == false)
+	if (no_doubles(a) == false)
 		exit_error();
-	if (already_sorted(stack_a) == true)
+	if (already_sorted(a) == true)
 		return (0);
-	// n_count = count_nodes(stack_a);
-	// if (n_count <= 5)
-	// 	sort_small_stack(stack_a, n_count);
-	//else
-	//	radix_sort(stack_a);
+	sort_index(a);
+	sort(&a, &b);
 }
-
-// mogelijk: aparte functies voor counting nodes en last_node

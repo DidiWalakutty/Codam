@@ -6,14 +6,14 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 19:56:09 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/06/30 20:01:48 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/04 18:17:31 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// check if all arg[] (now *str) arguments are digits or -
-// if str_len > 11, it's already be bigger than int max/min
+// Check if all arguments are digits. If strlen > 11, it's already be bigger than int max/min.
+// Calls atoi to convert them to integers.
 bool	check_digits(char *str, int *nb)
 {
 	int	i;
@@ -40,10 +40,8 @@ bool	check_digits(char *str, int *nb)
 	return (true);
 }
 
-// atoi, overflow and max-min numbers.
-// Start parsing the string from the first non-whitespace char.
-// INT_MIN is -...648, INT_MAX is ...647, but in case of INT_MIN (-), we still need to multx it with -1.
-// At first, the int will be bigger than INT_MAX (...648 instead of the max ...647), so I made it an edgecase.
+// INT_MIN is -...648, INT_MAX is +...647, but in case of INT_MIN it won't become a negative, until multx with -1.
+// At first it'll be +...648, so it overflows.
 // the multx=1 check is in case the string is bigger that INT_MAX. It'll also automatically turn nb in a negative (overflow).
 bool	atoi_and_overflow(char *str, int *nb)
 {
@@ -57,7 +55,7 @@ bool	atoi_and_overflow(char *str, int *nb)
 		x++;
 	if (str[x] == '-')
 	{
-			multx *= -1;
+		multx *= -1;
 		x++;
 	}
 	while (str[x] >= '0' && str[x] <= '9')
@@ -73,11 +71,8 @@ bool	atoi_and_overflow(char *str, int *nb)
 	return (true);
 }
 
-// This function parses the arguments through the function check_digits to
-// check if the passed arguments are indeed digits and converts it to integers (atoi).
-// If that worked, it'll link nodes to eachother to create the stack.
-// Create_node will create a node with the given nb from check_digits.
-// Then link_to_end is called to link the new node to the end of the list/stack.
+// This function parses the arguments are indeed digits and if it converts it from atoi.
+// If so, it'll create and link them to create the stack.
 bool	check_arguments(char **argv, t_stack *stack)
 {
 	int	i;
@@ -88,8 +83,49 @@ bool	check_arguments(char **argv, t_stack *stack)
 	{
 		if (check_digits(argv[i], &nb) == false)
 			return (false);
-		link_to_end(stack, create_node(nb));
+		link_to_end(stack, create_stack(nb));
 		i++;
+	}
+	return (true);
+}
+
+// This function checks for doubles in the stacks.
+// We check if the value of copy is equal to the value of the stack after it.
+// If it's not, we set temp to next. When we checked the first in stack, we set copy to next.
+bool	no_doubles(t_stack *stack)
+{
+	t_stack	*copy;
+	t_stack	*temp;
+
+	copy = stack;
+	while (copy)
+	{
+		temp = copy->next;
+		while (temp)
+		{
+			if (copy->nb == temp->nb)
+				return (false);
+			temp = temp->next;
+		}
+		copy = copy->next;
+	}
+	return (true);
+}
+
+// We check if the stack is already sorted by checking if the value of copy is > than the one next to it.
+// If it's bigger, we know it isn't sorted, since it's not in ascending order.
+bool	already_sorted(t_stack *stack)
+{
+	t_stack	*copy;
+	t_stack	*temp;
+
+	copy = stack;
+	while (copy)
+	{
+		temp = copy->next;
+		if (copy->nb > temp->nb)
+			return (false);
+		copy = copy->next;
 	}
 	return (true);
 }
