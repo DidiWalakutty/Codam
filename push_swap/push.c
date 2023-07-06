@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/04 13:45:13 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/04 18:45:44 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/06 13:39:39 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 // Push:
 //	pa - push a -		Pushes the first element of stack b and puts it to first element of stack a.
 //	pb - push b -		Pushes the first element of stack a and puts it to first element of stack b.
+// 						Do nothing if src is empty
 
-// Take first element at top of src and put at top dest.
-// Do nothing if src is empty
+// Target is the first element that'll be pushed to the other stack.
+// If there's no destination, we will set it to top of dest stack and set its next to NULL.
+// Otherwise it's added to the front of src stack.
 static void	push(t_stack **src, t_stack **dest)
 {
 	t_stack	*target;

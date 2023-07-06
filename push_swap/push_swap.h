@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/04 17:33:18 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/06 19:19:13 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ typedef struct s_stack
 
 // - parsing arguments - //
 
-bool	check_arguments(char **argv, t_stack *stack);
+bool	check_arguments(char **argv, t_stack **stack);
 bool	check_digits(char *str, int *nb);
 bool	atoi_and_overflow(char *str, int *nb);
-bool	no_doubles(t_stack *stack);
+bool	repeated_found(t_stack **stack);
 bool	already_sorted(t_stack *stack);
 
 // - stack utils - //
 
 t_stack	*create_stack(int nb);
-void	link_to_end(t_stack *stack, t_stack *new);
+void	link_to_end(t_stack **stack, t_stack *new);
 t_stack	*last_stack(t_stack *stack);
 void	add_front(t_stack **stack, t_stack *new);
 int		count_stacks(t_stack *stack);

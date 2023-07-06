@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:12 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/04 17:47:20 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/06 19:20:21 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,16 @@ int	main(int argc, char *argv[])
 		return (1);
 	a = NULL;
 	b = NULL;
-	if (check_arguments(argv, a) == false)
+	if (check_arguments(argv, &a) == false)
 		exit_error();
-	if (no_doubles(a) == false)
+	if (repeated_found(&a) == true)
 		exit_error();
-	if (already_sorted(a) == true)
+	// already_sorted not working properly
+	if (already_sorted(&a) == true)
+	{
+		printf("sorted\n");
 		return (0);
-	sort_index(a);
-	sort(&a, &b);
+	}
+	// sort_index(a);
+	// sort(&a, &b);
 }

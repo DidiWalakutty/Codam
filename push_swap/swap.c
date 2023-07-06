@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/03 15:44:29 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/04 18:44:15 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/06 13:07:35 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,10 @@
 //	sb - swap b -		Swap the two top elements of stack b.
 //	ss - swap both -	Swap both at once.
 
-// When swapping element 1 and 2, both will still respectively point to element 2 and 3.
-// To avoid this, we ...
-
-// At first, 'swap' is the second element in stack, but becomes the first after add_front.
-// When 'swap' becomes the first element, it'll still point to node 3.
-// Stack->next should become the second element, and because 'swap' will become first,
-// 
-
-// swap->next is already the position of (*stack)->next->next.
-//  Om infinite loop te voorkomen moet de gewisselde node naar de 3e wijzen.
+// When swapping element 1 and 2, both will still respectively point to element 2 and 3
+// To avoid this, we update (*stack)->next (the next pointer of the first node) to skip
+// swap (second node) and instead point to the node that follows after swap.
+// To avoid in infinite loop, we update the next pointers and use add_front after.
 static void	swap(t_stack **stack)
 {
 	t_stack	*swap;

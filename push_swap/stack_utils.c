@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   stacks_and_stacks.c                                 :+:    :+:            */
+/*   stack_utils.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/05/17 14:48:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/04 12:01:56 by diwalaku      ########   odam.nl         */
+/*   Created: 2023/07/06 19:15:17 by diwalaku      #+#    #+#                 */
+/*   Updated: 2023/07/06 19:15:29 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ t_stack	*create_stack(int nb)
 // This function adds the stack created in create_stack to the end.
 // If the stack is empty, we set new as first in stack. 
 // temp is set to last in the stack, and set next to new. Also point new to NULL.
-void	link_to_end(t_stack *stack, t_stack *new)
+void	link_to_end(t_stack **stack, t_stack *new)
 {
 	t_stack	*temp;
 
-	if (!stack)
+	if (!*stack)
 	{
-		stack = new;
+		*stack = new;
 		return ;
 	}
 	else
 	{
-		temp = last_stack(stack);
+		temp = last_stack(*stack);
 		temp->next = new;
 		new->next = NULL;
 	}

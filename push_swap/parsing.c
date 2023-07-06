@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 19:56:09 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/04 18:17:31 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/06 19:19:58 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	check_digits(char *str, int *nb)
 			return (false);
 		i++;
 	}
-	if (!atoi_and_overflow(str, nb) == false)
+	if (atoi_and_overflow(str, nb) == false)
 		return (false);
 	return (true);
 }
@@ -62,7 +62,7 @@ bool	atoi_and_overflow(char *str, int *nb)
 	{
 		*nb += str[x] - '0';
 		if (*nb < 0 && (*nb != INT_MIN || multx == 1))
-			exit_error();
+			return (false);
 		if (str[x + 1] >= '0' && str[x + 1] <= '9')
 			*nb *= 10;
 		x++;
@@ -73,7 +73,7 @@ bool	atoi_and_overflow(char *str, int *nb)
 
 // This function parses the arguments are indeed digits and if it converts it from atoi.
 // If so, it'll create and link them to create the stack.
-bool	check_arguments(char **argv, t_stack *stack)
+bool	check_arguments(char **argv, t_stack **stack)
 {
 	int	i;
 	int	nb;
@@ -89,27 +89,26 @@ bool	check_arguments(char **argv, t_stack *stack)
 	return (true);
 }
 
-// This function checks for doubles in the stacks.
-// We check if the value of copy is equal to the value of the stack after it.
-// If it's not, we set temp to next. When we checked the first in stack, we set copy to next.
-bool	no_doubles(t_stack *stack)
+bool	repeated_found(t_stack **stack)
 {
-	t_stack	*copy;
+	t_stack *copy;
 	t_stack	*temp;
 
-	copy = stack;
+	copy = *stack;
 	while (copy)
 	{
 		temp = copy->next;
 		while (temp)
 		{
 			if (copy->nb == temp->nb)
-				return (false);
+			{
+				return (true);
+			}
 			temp = temp->next;
 		}
 		copy = copy->next;
 	}
-	return (true);
+	return (false);
 }
 
 // We check if the stack is already sorted by checking if the value of copy is > than the one next to it.
