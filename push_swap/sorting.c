@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/20 19:55:58 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/06 15:42:13 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/10 20:23:37 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,44 +17,51 @@
 // If so, current is bigger, so we set it to next since its value is smaller.
 // If current is indexed, we set it to next. When we've done the whole stack and current == -1,
 // we set its index to the current i, since it's the smallest value.
-void	sort_index(t_stack *stack)
+void	sort_index(t_stack **stack)
 {
 	t_stack	*start;
 	t_stack	*current;
 	int		i;
 
 	i = 0;
-	current = stack;
-	start = stack;
-	while (i < count_stacks(stack))
+	current = *stack;
+	start = *stack;
+	while (i < count_stacks(*stack))
 	{
-		start = stack;
+		start = *stack;
 		while (start->next)
 		{
 			if (current->nb > start->next->nb && start->next->index == -1)
 				current = start->next;
 			else if (current->index != -1)
+			{
 				current = start->next;
+			}
 			start = start->next;
 		}
 		if (current->index == -1)
+		{
 			current->index = i;
-		current = stack;
+			printf("current[index] is: %i[%i]\n", (int)current->nb, (int)current->index);
+		}
+		current = *stack;
 		i++;
 	}
 }
 
-void	sort(t_stack **a, t_stack **b)
+void	sort(t_stack **a) //, t_stack **b)
 {
-	int	length;
+	int		length;
 
+	printf("in sort_function\n");
 	length = count_stacks(*a);
+	printf("length is %i\n", length);
 	if (length == 2)
 		ra(a);
 	else if (length == 3)
 		sort_three(a);
-	else if (length == 4) // up to length??
-		small_sort(a);
-	else
-		radix_sort(a);
+// 	else if (length == 4) // up to length??
+// 		small_sort(a);
+// 	else
+// 		radix_sort(a);
 }

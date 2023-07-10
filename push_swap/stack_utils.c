@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/06 19:15:17 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/06 19:15:29 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/10 17:41:26 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ int	count_stacks(t_stack *stack)
 	int	i;
 
 	i = 0;
-	while (stack->next)
+	while (stack)
 	{
-		i++;
 		stack = stack->next;
+		i++;
 	}
 	return (i);
 }

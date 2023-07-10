@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 19:56:09 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/06 19:19:58 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/10 16:28:22 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,25 +101,24 @@ bool	repeated_found(t_stack **stack)
 		while (temp)
 		{
 			if (copy->nb == temp->nb)
-			{
 				return (true);
-			}
 			temp = temp->next;
 		}
 		copy = copy->next;
 	}
+
 	return (false);
 }
 
 // We check if the stack is already sorted by checking if the value of copy is > than the one next to it.
 // If it's bigger, we know it isn't sorted, since it's not in ascending order.
-bool	already_sorted(t_stack *stack)
+bool	check_sorted(t_stack **stack)
 {
 	t_stack	*copy;
 	t_stack	*temp;
 
-	copy = stack;
-	while (copy)
+	copy = *stack;
+	while (copy && copy->next)
 	{
 		temp = copy->next;
 		if (copy->nb > temp->nb)

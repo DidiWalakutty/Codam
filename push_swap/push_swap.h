@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/06 19:19:13 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/10 20:22:52 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	check_arguments(char **argv, t_stack **stack);
 bool	check_digits(char *str, int *nb);
 bool	atoi_and_overflow(char *str, int *nb);
 bool	repeated_found(t_stack **stack);
-bool	already_sorted(t_stack *stack);
+bool	check_sorted(t_stack **stack);
 
 // - stack utils - //
 
@@ -50,8 +50,9 @@ void	exit_error(void);
 
 // - index and sort - //
 
-void	sort_index(t_stack *stack);
-void	sort(t_stack **a, t_stack **b);
+void	sort_index(t_stack **stack);
+void	sort(t_stack **a); //, t_stack **b);
+void	sort_three(t_stack **a);
 
 // - operations - //
 
@@ -70,4 +71,7 @@ void	rrr(t_stack **a, t_stack **b);
 void	pa(t_stack **b, t_stack **a);
 void	pb(t_stack **a, t_stack **b);
 
+//remove soon
+
+void print_stack(t_stack **stack);
 #endif
