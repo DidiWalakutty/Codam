@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/20 19:55:58 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/10 20:23:37 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/11 20:57:07 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,20 @@ void	sort_index(t_stack **stack)
 	}
 }
 
-void	sort(t_stack **a) //, t_stack **b)
+void	sort(t_stack **a, t_stack **b)
 {
 	int		length;
 
-	printf("in sort_function\n");
+	printf("in sort\n");
 	length = count_stacks(*a);
-	printf("length is %i\n", length);
 	if (length == 2)
 		ra(a);
 	else if (length == 3)
 		sort_three(a);
-// 	else if (length == 4) // up to length??
-// 		small_sort(a);
-// 	else
-// 		radix_sort(a);
+	else if (length == 4)
+		sort_four(a, b);
+	// else if (length == 5)
+	// 	sort_five(a, b);
+// 	else if (length >= 6)
+// 		radix_sort(a, b);
 }

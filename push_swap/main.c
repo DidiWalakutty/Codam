@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:12 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/10 19:53:24 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/11 17:28:43 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	sort_index(&a);
-	// works up to sort_index
-	sort(&a);
+	// works up to sorting 3
+	sort(&a, &b);
 	printf("after sort function\n");
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/04 13:45:13 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/06 13:39:39 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/11 18:19:34 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ static void	push(t_stack **src, t_stack **dest)
 
 void	pa(t_stack **b, t_stack **a)
 {
-	push(a, b);
+	push(b, a);
 	ft_putstr_fd("pa\n", 1);
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
-	push(b, a);
+	push(a, b);
 	ft_putstr_fd("pb\n", 1);
 }
