@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 19:56:09 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/10 16:28:22 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/15 11:28:20 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Check if all arguments are digits. If strlen > 11, it's already be bigger than int max/min.
 // Calls atoi to convert them to integers.
-bool	check_digits(char *str, int *nb)
+bool	check_digits(char *str, int *num)
 {
 	int	i;
 
@@ -35,20 +35,20 @@ bool	check_digits(char *str, int *nb)
 			return (false);
 		i++;
 	}
-	if (atoi_and_overflow(str, nb) == false)
+	if (atoi_and_overflow(str, num) == false)
 		return (false);
 	return (true);
 }
 
 // INT_MIN is -...648, INT_MAX is +...647, but in case of INT_MIN it won't become a negative, until multx with -1.
 // At first it'll be +...648, so it overflows.
-// the multx=1 check is in case the string is bigger that INT_MAX. It'll also automatically turn nb in a negative (overflow).
-bool	atoi_and_overflow(char *str, int *nb)
+// the multx=1 check is in case the string is bigger that INT_MAX. It'll also automatically turn num in a negative (overflow).
+bool	atoi_and_overflow(char *str, int *num)
 {
 	int	x;
 	int	multx;
 
-	*nb = 0;
+	*num = 0;
 	x = 0;
 	multx = 1;
 	while ((str[x] >= 9 && str[x] <= 13) || str[x] == 32)
@@ -60,14 +60,14 @@ bool	atoi_and_overflow(char *str, int *nb)
 	}
 	while (str[x] >= '0' && str[x] <= '9')
 	{
-		*nb += str[x] - '0';
-		if (*nb < 0 && (*nb != INT_MIN || multx == 1))
+		*num += str[x] - '0';
+		if (*num < 0 && (*num != INT_MIN || multx == 1))
 			return (false);
 		if (str[x + 1] >= '0' && str[x + 1] <= '9')
-			*nb *= 10;
+			*num *= 10;
 		x++;
 	}
-	*nb *= multx;
+	*num *= multx;
 	return (true);
 }
 
@@ -76,14 +76,14 @@ bool	atoi_and_overflow(char *str, int *nb)
 bool	check_arguments(char **argv, t_stack **stack)
 {
 	int	i;
-	int	nb;
+	int	num;
 
 	i = 1;
 	while (argv[i])
 	{
-		if (check_digits(argv[i], &nb) == false)
+		if (check_digits(argv[i], &num) == false)
 			return (false);
-		link_to_end(stack, create_stack(nb));
+		link_to_end(stack, create_stack(num));
 		i++;
 	}
 	return (true);
@@ -100,7 +100,7 @@ bool	repeated_found(t_stack **stack)
 		temp = copy->next;
 		while (temp)
 		{
-			if (copy->nb == temp->nb)
+			if (copy->num == temp->num)
 				return (true);
 			temp = temp->next;
 		}
@@ -121,7 +121,7 @@ bool	check_sorted(t_stack **stack)
 	while (copy && copy->next)
 	{
 		temp = copy->next;
-		if (copy->nb > temp->nb)
+		if (copy->num > temp->num)
 			return (false);
 		copy = copy->next;
 	}

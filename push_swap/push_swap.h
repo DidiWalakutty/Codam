@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/11 20:57:28 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/15 17:52:40 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 typedef struct s_stack
 {
-	int				nb;
+	int				num;
 	int				index;
 	struct s_stack	*next;
 }	t_stack;
@@ -31,14 +31,14 @@ typedef struct s_stack
 // - parsing arguments - //
 
 bool	check_arguments(char **argv, t_stack **stack);
-bool	check_digits(char *str, int *nb);
-bool	atoi_and_overflow(char *str, int *nb);
+bool	check_digits(char *str, int *num);
+bool	atoi_and_overflow(char *str, int *num);
 bool	repeated_found(t_stack **stack);
 bool	check_sorted(t_stack **stack);
 
 // - stack utils - //
 
-t_stack	*create_stack(int nb);
+t_stack	*create_stack(int num);
 void	link_to_end(t_stack **stack, t_stack *new);
 t_stack	*last_stack(t_stack *stack);
 void	add_front(t_stack **stack, t_stack *new);
@@ -55,7 +55,7 @@ void	sort(t_stack **a, t_stack **b);
 void	sort_three(t_stack **a);
 void	sort_four(t_stack **a, t_stack **b);
 t_stack	*find_highest(t_stack *stack);
-t_stack	*find_lowest(t_stack *stack);
+int		find_lowest_num(t_stack *stack);
 
 // - operations - //
 
@@ -74,4 +74,8 @@ void	rrr(t_stack **a, t_stack **b);
 void	pa(t_stack **b, t_stack **a);
 void	pb(t_stack **a, t_stack **b);
 
+// - Print Stacks - //
+
+void	print_stack(t_stack *stack);
+void	print_both_stacks(t_stack *stack_a, t_stack *stack_b);
 #endif

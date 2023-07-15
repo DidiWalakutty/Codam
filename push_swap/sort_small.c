@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/06 14:33:47 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/11 21:43:22 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/15 17:55:08 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ t_stack	*find_highest(t_stack *stack)
 	value = INT_MIN;
 	while (stack)
 	{	
-		if (stack->nb > value)
+		if (stack->num > value)
 		{
-			value = stack->nb;
+			value = stack->num;
 			highest_node = stack;
 		}	
 		stack = stack->next;
@@ -31,23 +31,20 @@ t_stack	*find_highest(t_stack *stack)
 	return (highest_node);
 }
 
-t_stack	*find_lowest(t_stack *stack)
+int	find_lowest_num(t_stack *stack)
 {
-	t_stack	*lowest_node;
+	t_stack	*node;
 	int		value;
 
-	lowest_node = stack;
-	value = INT_MAX;
-	while (stack)
+	node = stack;
+	value = node->num;
+	while (node->next)
 	{
-		if (stack->nb < value)
-		{
-			value = stack->nb;
-			lowest_node = stack;
-		}
-		stack = stack->next;
+		if (node->next->num < value)
+			value = node->next->num;
+		node = node->next;
 	}
-	return (lowest_node);
+	return (value);
 }
 
 void	sort_three(t_stack **a)
@@ -66,68 +63,12 @@ void	sort_three(t_stack **a)
 
 void	sort_four(t_stack **a, t_stack **b)
 {
-	//t_stack	*lowest;
-	int		i;
+	int		lowest_num;
 
-	// lowest = find_lowest(*a);
-	// pb(&lowest, b);
-	// 	while (*a != lowest)
-	// {
-	// 	printf("in a != lowest\n");
-	// 	*a = (*a)->next;
-	// 	printf("next is now: %i[%i]\n", (int)(*a)->nb, (int)(*a)->index);
-	// }
-
-	i = count_stacks(*a);
-	while (i--)
-	{
-		printf("1. before a->index is now: %i[%i]\n", (int)(*a)->nb, (int)(*a)->index);
-		if ((*a)->index == 0)
-		{
-			printf("2. a->index is now: %i[%i]\n", (int)(*a)->nb, (int)(*a)->index);
-			pb(a, b);
-		}
-		else
-		{
-			ra(a);
-			printf("2. a->index is now: %i[%i]\n", (int)(*a)->nb, (int)(*a)->index);
-		}
-	}
-
-	// printf("1. a->index is: %i[%i]\n", (int)(*a)->next->nb, (int)(*a)->next->index);
-	// printf("2. a->index is: %i[%i]\n", (int)(*a)->next->nb, (int)(*a)->next->next->index);
-	// printf("3. a->index is: %i[%i]\n", (int)(*a)->next->next->nb, (int)(*a)->next->next->index);
-	// printf("4. a->index is: %i[%i]\n", (int)(*a)->next->next->next->nb, (int)(*a)->next->next->next->index);
-	// pb(a, b);
-	
-	// sort_three(a);
-	// pa(b, a);
-
-	// or 
-
-	// while (i--)
-	// {
-	// 	if ((*a)->index == 0)
-	// 		pb(a, b);
-	// }
-
-
-
-
-	// while (a != )
-	// pb(a, b);
-	// while (i < count_stacks(*a))
-	// {
-	// 	if ((*a)->index == 0 || (*a)->index == 1)
-	// 		pb(a, b);
-	// 	else
-	// 		ra(a);
-	// 	i++;
-	// }
-	// printf("after while loop\n");
-	// sort_three(a);
-	// pa(b, a);
-	// pa(b, a);
-	// if ((*a)->index > (*a)->next->index)
-	// 	sa(a);
+	lowest_num = find_lowest_num(*a);
+	while ((*a)->num != lowest_num)  
+		ra(a);
+	pb(a, b);
+	sort_three(a);
+	pa(b, a);
 }

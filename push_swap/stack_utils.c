@@ -6,22 +6,22 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/06 19:15:17 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/10 17:41:26 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/15 17:16:54 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// This function creates a new stack that's set to the value of nb, and sets 'next' to NULL.
+// This function creates a new stack that's set to the value of num, and sets 'next' to NULL.
 // Also creates an index of -1 so we can track if it has been indexed in sort_index.
-t_stack	*create_stack(int nb)
+t_stack	*create_stack(int num)
 {
 	t_stack	*new;
 
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);
-	new->nb = nb;
+	new->num = num;
 	new->index = -1;
 	new->next = NULL;
 	return (new);
@@ -30,6 +30,7 @@ t_stack	*create_stack(int nb)
 // This function adds the stack created in create_stack to the end.
 // If the stack is empty, we set new as first in stack. 
 // temp is set to last in the stack, and set next to new. Also point new to NULL.
+
 void	link_to_end(t_stack **stack, t_stack *new)
 {
 	t_stack	*temp;

@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/20 19:55:58 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/11 20:57:07 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/15 11:28:20 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	sort_index(t_stack **stack)
 		start = *stack;
 		while (start->next)
 		{
-			if (current->nb > start->next->nb && start->next->index == -1)
+			if (current->num > start->next->num && start->next->index == -1)
 				current = start->next;
 			else if (current->index != -1)
 			{
@@ -42,7 +42,7 @@ void	sort_index(t_stack **stack)
 		if (current->index == -1)
 		{
 			current->index = i;
-			printf("current[index] is: %i[%i]\n", (int)current->nb, (int)current->index);
+			printf("current[index] is: %i[%i]\n", (int)current->num, (int)current->index);
 		}
 		current = *stack;
 		i++;

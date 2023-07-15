@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/03 17:08:18 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/04 18:31:39 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/15 17:17:06 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,3 +59,5 @@ void	rrr(t_stack **a, t_stack **b)
 	rev_rotate(b);
 	ft_putstr_fd("rrr\n", 1);
 }
+
+

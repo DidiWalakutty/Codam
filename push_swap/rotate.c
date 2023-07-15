@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/03 13:34:05 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/10 20:14:55 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/15 17:40:56 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,23 @@
 //	rr - rotate both -	Shift up both at once.
 //						First element becomes the last.
 
-// Link_to_end places temp at last position in the stack and sets it's next to NULL.
+// Last is set to the current first node, which will become the last node.
+// Second_to_last is set to the current last node, which will become the second to last node.
+// Stack is set to the second node, now the head of the list.
+// Last->next = NULL, breaking the link from first in the list and becoming the last node.
+// Second_to_last points to first, eventually being shift one above first node and being the second_to_last in the list.
 static void	rotate(t_stack **stack)
 {
-	t_stack	*temp;
+	t_stack	*last;
+	t_stack	*second_to_last;
 
-	if (count_stacks(*stack) <= 1)
+	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
-	temp = *stack;
-	link_to_end(stack, temp);
+	second_to_last = last_stack(*stack);
+	last = *stack;
 	*stack = (*stack)->next;
-	temp->next = NULL;
+	last->next = NULL;
+	second_to_last->next = last;
 }
 
 void	ra(t_stack **a)
