@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/20 19:55:58 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/15 11:28:20 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/15 18:02:58 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	sort(t_stack **a, t_stack **b)
 		sort_three(a);
 	else if (length == 4)
 		sort_four(a, b);
-	// else if (length == 5)
-	// 	sort_five(a, b);
+	else if (length == 5)
+		sort_five(a, b);
 // 	else if (length >= 6)
 // 		radix_sort(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/15 17:52:40 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/15 17:59:46 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	sort_index(t_stack **stack);
 void	sort(t_stack **a, t_stack **b);
 void	sort_three(t_stack **a);
 void	sort_four(t_stack **a, t_stack **b);
+void	sort_five(t_stack **a, t_stack **b);
 t_stack	*find_highest(t_stack *stack);
 int		find_lowest_num(t_stack *stack);
 
