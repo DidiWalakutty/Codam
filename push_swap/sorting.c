@@ -6,54 +6,68 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/20 19:55:58 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/15 18:02:58 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/16 19:18:37 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Find the minimum value among all un-indexed stacks.
-// Checks if current > next and if it's indexed/unassigned or not.
-// If so, current is bigger, so we set it to next since its value is smaller.
-// If current is indexed, we set it to next. When we've done the whole stack and current == -1,
-// we set its index to the current i, since it's the smallest value.
-void	sort_index(t_stack **stack)
+void	sort_three(t_stack **a)
 {
-	t_stack	*start;
-	t_stack	*current;
-	int		i;
+	t_stack	*highest;
 
+	highest = find_highest(*a);
+	if (*a == highest)
+		ra(a);
+	else if ((*a)->next == highest)
+		rra(a);
+	if (check_sorted(a) == true)
+		return ;
+	sa(a);
+}
+
+void	sort_four(t_stack **a, t_stack **b)
+{
+	int		lowest_num;
+
+	lowest_num = find_lowest_num(*a);
+	while ((*a)->num != lowest_num)  
+		ra(a);
+	pb(a, b);
+	sort_three(a);
+	pa(b, a);
+}
+
+void	sort_five(t_stack **a, t_stack **b)
+{
+	int	lowest_num;
+
+	lowest_num = find_lowest_num(*a);
+	while ((*a)->num != lowest_num)  
+		ra(a);
+	pb(a, b);
+	sort_four(a, b);
+	pa(b, a);
+}
+
+void	radix_sort(t_stack **a, t_stack **b)
+{
+	int	i;
+	int	x;
+	int	max_bits;
+	int	length;
+
+	x = 0;
+	length = count_stacks(*a);
+	max_bits =	find_max_bits(length);
 	i = 0;
-	current = *stack;
-	start = *stack;
-	while (i < count_stacks(*stack))
-	{
-		start = *stack;
-		while (start->next)
-		{
-			if (current->num > start->next->num && start->next->index == -1)
-				current = start->next;
-			else if (current->index != -1)
-			{
-				current = start->next;
-			}
-			start = start->next;
-		}
-		if (current->index == -1)
-		{
-			current->index = i;
-			printf("current[index] is: %i[%i]\n", (int)current->num, (int)current->index);
-		}
-		current = *stack;
-		i++;
-	}
+	while (i < )
 }
 
 void	sort(t_stack **a, t_stack **b)
 {
 	int		length;
 
-	printf("in sort\n");
 	length = count_stacks(*a);
 	if (length == 2)
 		ra(a);
@@ -63,6 +77,6 @@ void	sort(t_stack **a, t_stack **b)
 		sort_four(a, b);
 	else if (length == 5)
 		sort_five(a, b);
-// 	else if (length >= 6)
-// 		radix_sort(a, b);
+	else if (length >= 6)
+		radix_sort(a, b);
 }

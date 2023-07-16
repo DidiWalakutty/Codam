@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 22:07:15 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/15 17:59:46 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/16 18:44:16 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		count_stacks(t_stack *stack);
 
 // - error - //
 
-void	exit_error(void);
+void	exit_error();
 
 // - index and sort - //
 
@@ -75,8 +75,8 @@ void	rrr(t_stack **a, t_stack **b);
 void	pa(t_stack **b, t_stack **a);
 void	pb(t_stack **a, t_stack **b);
 
-// - Print Stacks - //
+// // - Print Stacks - //
 
-void	print_stack(t_stack *stack);
-void	print_both_stacks(t_stack *stack_a, t_stack *stack_b);
+// void	print_stack(t_stack *stack);
+// void	print_both_stacks(t_stack *stack_a, t_stack *stack_b);
 #endif

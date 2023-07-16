@@ -6,7 +6,7 @@
 /*   By: diwalaku <diwalaku@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 19:56:09 by diwalaku      #+#    #+#                 */
-/*   Updated: 2023/07/15 11:28:20 by diwalaku      ########   odam.nl         */
+/*   Updated: 2023/07/16 18:07:04 by diwalaku      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	check_digits(char *str, int *num)
 		i++;
 	}
 	if (str[i] == '\0')
-		exit_error();
+		exit_error("Error");
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))

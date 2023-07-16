@@ -6,7 +6,7 @@
 #    By: diwalaku <diwalaku@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/05/18 17:39:35 by diwalaku      #+#    #+#                  #
-#    Updated: 2023/07/15 17:49:48 by diwalaku      ########   odam.nl          #
+#    Updated: 2023/07/16 19:11:55 by diwalaku      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,14 @@ LIBFT_FLAG = -I libft
 
 SRCS =	main.c \
 		parsing.c \
-		stack_utils.c \
+		utils.c \
+		sort_utils.c \
 		sorting.c \
-		sort_small.c \
 		swap.c \
 		push.c \
 		rotate.c \
 		reverse_rotate.c \
 		error.c \
-		REMOVE_helper_function_print_stacks.c \
 		
 OBJ = ${SRCS:.c=.o}
 
